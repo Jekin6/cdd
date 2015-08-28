@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Tabs - Collapse content</title>
+  <script src="script/jquery-ui-1.11.4.custom/jquery-1.10.2-min.js"></script>
+  <link rel="stylesheet" href="style/jquery-ui.css">
+  <link rel="stylesheet" href="style/style.css">
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">   -->
+  <script src="script/jquery-ui-1.11.4.custom/jquery-ui.js"></script> 
+  <script src="script/jquery.sortable.js"></script>
+  <script src="script/config.js"></script>
+ <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+  <style type="text/css">
+ 
+  </style>
+ 
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs_fileupload">Select File</a></li>
+    <li><a href="#tabs_feature">Features</a></li>
+    <li><a href="#tabs_configuration">Config</a></li>
+   <li><a href="#tabs_4">Aenean lacinia</a></li>
+  </ul>
+  <div id="tabs_fileupload">
+   <h1>Specify customized config file</h1>
+   <p>
+       <input type="file" id="file" name="file" value="Choose your config File" />
+       <button onclick="">Submit</button>
+   </p>
+  <p id="contents" /> 
+
+ </div>
+  <div id="tabs_feature">
+    <h1>feature</h1>        
+       <!--  <input type="checkbox" value="HydrogenCalculation">HydrogenCalculation<br>
+        <input type="checkbox" value="ChemTranslation">ChemTranslation<br>
+        <input type="checkbox" value="CopyPaste">CopyPaste<br>
+        <input type="checkbox" value="Print">Print<br>
+        <input type="checkbox" value="FileDrop">FileDrop<br>
+        <input type="checkbox" value="LogoLink">LogoLink<br>
+        <input type="checkbox" value="ReactionArrow">ReactionArrow<br>
+        <input type="checkbox" value="StructureCleanup">StructureCleanup<br>
+        <input type="checkbox" value="ReactionCleanup">ReactionCleanup<br>
+        <input type="checkbox" value="GroupUngroup">GroupUngroup<br>
+        <input type="checkbox" value="Radical">Radical<br>
+        <input type="checkbox" value="LonePair">LonePair<br>
+        <input type="checkbox" value="ElectronPushing">ElectronPushing<br>
+        <input type="checkbox" value="RadicalPushing">RadicalPushing<br>
+        <input type="checkbox" value="WarningsForQueries">WarningsForQueries<br>
+        <input type="checkbox" value="WarningsForLonePairDivalentConversion">WarningsForLonePairDivalentConversion<br> -->
+        <button id="generate_feature">Generate</button><br>
+  </div>
+  <div id="tabs_configuration">
+    <h1>Configuration</h1>      
+        <p>
+        <label>ChemDraw Direct Service:</label><input id="cddservice" type="text" value="https://ec2-54-163-60-123.compute-1.amazonaws.com/cdd1.4/rest/" /><br>
+        </p>
+        <p>
+        <label>Orientation:</label>
+        <select id='orientation'>
+            <option value="Vertical">Vertical</option>
+            <option value="Horizontal">Horizontal</option>
+            <option value="Mixed">Mixed</option>
+        </select>
+        </p>
+        <ul class="layout" id="layout">
+          <!--   <li><input id="layout_Undo" type="checkbox" checked value="Undo"><label for="layout_Undo">Undo</label></li>
+            <li><input id="layout_Redo" type="checkbox" checked value="Redo"><label for="layout_Redo">Redo</label></li>
+            <li><input id="layout_MarqueeSelection" type="checkbox" checked value="MarqueeSelection"><label for="layout_MarqueeSelection">MarqueeSelection</label></li>
+            <li><input id="layout_LassoSelection" type="checkbox" checked value="LassoSelection"><label for="layout_LassoSelection">LassoSelection</label></li>
+            <li><input id="layout_ZoomIn" type="checkbox" checked value="ZoomIn"><label for="layout_ZoomIn">ZoomIn</label></li>
+            <li><input id="layout_ZoomOut" type="checkbox" checked value="ZoomOut"><label for="layout_ZoomOut">ZoomOut</label></li>
+            <li><input id="layout_Eraser" type="checkbox" checked value="Eraser"><label for="layout_Eraser">Eraser</label></li>
+            <li><input id="layout_MoveCanvas" type="checkbox" checked value="MoveCanvas"><label for="layout_MoveCanvas">MoveCanvas</label></li>
+            <li><input id="layout_Text" type="checkbox" checked value="Text"><label for="layout_Text">Text</label></li>
+            <li><input id="layout_AcyclicChain" type="checkbox" checked value="AcyclicChain"><label for="layout_AcyclicChain">AcyclicChain</label></li>
+            <li><input id="layout_Superscript" type="checkbox" checked value="Superscript"><label for="layout_Superscript">Superscript</label></li>
+            <li><input id="layout_Subscript" type="checkbox" checked value="Subscript"><label for="layout_Subscript">Subscript</label></li>
+            <li><input id="layout_Copy" type="checkbox" checked value="Copy"><label for="layout_Copy">Copy</label></li>
+            <li><input id="layout_Paste" type="checkbox" checked value="Paste"><label for="layout_Paste">Paste</label></li>
+            <li><input id="layout_ElectronPushing" type="checkbox" checked value="ElectronPushing"><label for="layout_ElectronPushing">ElectronPushing</label></li>
+            <li><input id="layout_RadicalPushing" type="checkbox" checked value="RadicalPushing"><label for="layout_RadicalPushing">RadicalPushing</label></li>
+            <li><input id="layout_Print" type="checkbox" checked value="Print"><label for="layout_Print">Print</label></li>
+            <li><input id="layout_ReactionArrow" type="checkbox" checked value="ReactionArrow"><label for="layout_ReactionArrow">ReactionArrow</label></li>
+            <li><input id="layout_StructureCleanup" type="checkbox" checked value="StructureCleanup"><label for="layout_StructureCleanup">StructureCleanup</label></li>
+            <li><input id="layout_ReactionCleanup" type="checkbox" checked value="ReactionCleanup"><label for="layout_ReactionCleanup">ReactionCleanup</label></li>
+            <li><input id="layout_Group" type="checkbox" checked value="Group"><label for="layout_Group">Group</label></li>
+            <li><input id="layout_Ungroup" type="checkbox" checked value="Ungroup"><label for="layout_Ungroup">Ungroup</label></li>
+            <li><input id="layout_Integral" type="checkbox" checked value="Integral"><label for="layout_Integral">Integral</label></li>
+            <li><input id="layout_Unintegral" type="checkbox" checked value="Unintegral"><label for="layout_Unintegral">Unintegral</label></li>
+            <li><input id="layout_CirclePlus" type="checkbox" checked value="CirclePlus"><label for="layout_CirclePlus">CirclePlus</label></li>
+            <li><input id="layout_CircleMinus" type="checkbox" checked value="CircleMinus"><label for="layout_CircleMinus">CircleMinus</label></li>
+            <li><input id="layout_LonePair" type="checkbox" checked value="LonePair"><label for="layout_LonePair">LonePair</label></li>
+            <li><input id="layout_Radical" type="checkbox" checked value="Radical"><label for="layout_Radical">Radical</label></li>
+            <li><input id="layout_SolidBond" type="checkbox" checked value="SolidBond"><label for="layout_SolidBond">SolidBond</label></li>
+            <li><input id="layout_DoubleBond" type="checkbox" checked value="DoubleBond"><label for="layout_DoubleBond">DoubleBond</label></li>
+            <li><input id="layout_TripleBond" type="checkbox" checked value="TripleBond"><label for="layout_TripleBond">TripleBond</label></li>
+            <li><input id="layout_BoldBond" type="checkbox" checked value="BoldBond"><label for="layout_BoldBond">BoldBond</label></li>
+            <li><input id="layout_DashedBond" type="checkbox" checked value="DashedBond"><label for="layout_DashedBond">DashedBond</label></li>
+            <li><input id="layout_WedgeBond" type="checkbox" checked value="WedgeBond"><label for="layout_WedgeBond">WedgeBond</label></li>
+            <li><input id="layout_HashedWedgeBond" type="checkbox" checked value="HashedWedgeBond"><label for="layout_HashedWedgeBond">HashedWedgeBond</label></li>
+            <li><input id="layout_Propane" type="checkbox" checked value="Propane"><label for="layout_Propane">Propane</label></li>
+            <li><input id="layout_Butane" type="checkbox" checked value="Butane"><label for="layout_Butane">Butane</label></li>
+            <li><input id="layout_Pentane" type="checkbox" checked value="Pentane"><label for="layout_Pentane">Pentane</label></li>
+            <li><input id="layout_Hexane" type="checkbox" checked value="Hexane"><label for="layout_Hexane">Hexane</label></li>
+            <li><input id="layout_Benzene" type="checkbox" checked value="Benzene"><label for="layout_Benzene">Benzene</label></li>
+            <li><input id="layout_CyclohexaneChairRight" type="checkbox" checked value="CyclohexaneChairRight"><label for="layout_CyclohexaneChairRight">CyclohexaneChairRight</label></li>
+            <li><input id="layout_CyclohexaneChairLef" type="checkbox" checked value="CyclohexaneChairLef"><label for="layout_CyclohexaneChairLef">CyclohexaneChairLef</label></li> -->
+        </ul>
+        <button id="generate_configurate">Generate</button><br>
+  </div>
+ <div id="tabs_4">
+   <p><strong>Click this tab again to close the content pane.</strong></p>
+   <p></p>
+ </div>  
+</div> 
+<section>
+<div id="generate">
+    <div >
+        <p><button id="btn-generate" onclick="return generateJson();">Generate JSON</button> </p>
+        <label for="generated-json">Generated Configuration</label>
+        <textarea id="generated-json" class="json-content" ></textarea>       
+     </div>  
+     <div>
+        <textarea id="result_feature"> </textarea>        
+        <textarea id="result_configurate"> </textarea>
+     </div> 
+  </div>
+</section>
+ <script>
+  $(function() {
+
+    $( "#tabs" ).tabs({
+      collapsible: true
+    });
+
+    if(isAPIAvailable()) {
+      $('#file').bind('change', handleFileSelect);
+    }
+
+    bindFeatures("#tabs_feature");
+    bindButtons("#layout");
+    //make button orders dragable
+    $('.layout').sortable(); 
+
+    $('#generate_feature').on('click', function(event) {
+        var text_result = JSON.stringify(generate_feature(),null,2);
+        $('#result_feature').text(text_result);
+    });
+    $('#generate_configurate').on('click', function(event) {
+        var text_result = JSON.stringify(generate_configurate(),null,2);
+        $('#result_configurate').text(text_result);
+    });
+ });
+
+  </script> 
+</body>
+</html>

@@ -1,0 +1,122 @@
+html {
+        box-sizing: border-box;
+}
+        
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+	font-size: 62.5%;
+}
+
+ textarea{
+    width: 99%;
+    height: 200px;
+    overflow: auto;
+    border: 2px solid green;
+    padding: 5px; 
+    margin:10px .5%;        
+  }
+
+ /* #generate label{
+  	float: left;
+  	text-align: left;
+  }*/
+  #result_feature{
+  	width: 49%;
+  	border: 1px solid green;  	 
+  	float: left;
+  	margin: 5px .5%;
+  }
+  #result_configurate{
+  width: 49%;
+  border: 1px solid green;
+  float: right;
+  margin: 5px .5%;
+  }
+
+  .json-content
+  {
+    height: 300px;
+    overflow: auto;
+  }
+
+
+ul {
+  
+  list-style-type: none;
+ 
+  padding-start: 0px; /* not supported by IE*/
+  -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  -o-padding-start: 0px;
+}
+
+
+label {
+  min-width: 175px;
+  display: inline-block;
+}
+
+.layout li, .layout2 li{
+    margin: 1px;
+    margin-left:20px;
+    display: block;
+    width: 200px;
+}
+
+.feature_layout li{
+  margin: 1px;
+  display: block;
+  width: 300px;
+  float: left;  
+}
+
+.layout li:active, .layout2 li:active{
+    background-color: yellow;
+}
+
+.layout label, .layout2 label {
+    cursor: move;
+}
+
+.horizontal{
+ float: left;
+}
+
+.vertical{
+  float:none; 
+}
+.conf-property{
+  display:inline;
+}
+.btnGenerate{
+width:200px;
+height: 50px;
+border: 1px solid rgb(133,130, 100);
+font-size: x-large;
+
+}
+.connectedSortable{
+min-height: 50px;  
+height: 100%;
+padding: 0 20px auto;
+}
+
+.sortable-placeholder{    
+    display: block;
+    width: 200px;
+    height: 20px;
+    border: 1px dotted red;
+    float: left;
+    background:lightBlue;    
+}
+

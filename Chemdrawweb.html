@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <!-- Keeps the mobile browsers from reporting they are larger than they actually are -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- On Apple devices on orientation change will automatically adjust size of webpage to fill screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Chemdraw web</title>
+    
+    <script type="text/javascript" src="chemdrawweb/chemdrawweb.nocache.js"></script>
+    <script type="text/javascript" src="chemdrawweb/ChemdrawWebManager.js"></script>
+    <script type="text/javascript" src="script/APITest.js"></script>
+    <script type="text/javascript" src="script/jqueryui/js/jquery-1.9.1.js"></script>
+    
+    <style>
+        /* This makes it so that widths and heights will be defined to include padding and borders
+         * So if you say 100% and then add border of 1px then it will not go beyond the 100% to add
+         * the border, etc
+         */
+        html {
+            box-sizing: border-box;
+        }
+        
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        
+        body, html {
+            height: 100%;
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        @media (orientation:landscape) {
+			html.ipad.ios7 > body {
+				position: fixed;
+				bottom: 0;
+				width:100%;
+				height: 672px !important;
+			}
+		}
+    
+        #drawingTool {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+        
+        #apiButtons {
+            width: 100%;
+            display:none;
+            padding-top: 5px;
+            overflow: auto;
+        }
+        
+        #apiButtons input {
+            margin: 5px;
+            padding: 5px;
+            width: 120px;
+        }
+        
+        #apiToolsPanel {
+            font-family: Arial;
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            height: 36px;
+            width: 140px;
+            margin-left: -70px;
+            background: #FFFFFF;
+            z-index: 1000;
+            padding: 10px;
+            -webkit-box-shadow: 10px 10px 25px #ccc; 
+            -moz-box-shadow: 10px 10px 25px #ccc; 
+            box-shadow: 10px 10px 25px #ccc;
+            border-radius: 5px;
+            border: 1px #EEEEEE solid;
+            -moz-border-radius:5px;
+        }
+        
+        #apiToolsPanel a {
+            color: #354875;
+            text-decoration: none;
+        }
+        
+        #toolsPanelTitle table {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    
+  </head>
+  <body>
+    <div id="drawingTool"></div>
+    
+    <div id="apiToolsPanel">
+        <div id="toolsPanelTitle">
+            <table align="center">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><a href="javascript:toggleAPIButtons()">API Buttons</a></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+        <div id="apiButtons"><span id="APITestPanel"></span></div>
+    </div> 
+    
+    <script>
+    	function fixiOS7Height() {
+			var userAgentString = navigator.userAgent.toLowerCase();
+
+			if (userAgentString.indexOf("chrome") > -1 || userAgentString.indexOf("chromium") > -1 || userAgentString.indexOf("crios") > -1) {
+				return;
+			}
+		
+			if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+				$('html').addClass('ipad ios7');
+			}
+		}
+    	
+    	fixiOS7Height();
+    
+        var showApiButtons=false;
+        var features;
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == "features") {
+                features = sParameterName[1];
+            }
+        }
+    
+        var toolAttached = function(drawingTool) {
+            APITest.attach(drawingTool, "APITestPanel");
+        };
+    
+        var anchor = $("#drawingTool").get(0);
+        perkinelmer.ChemdrawWebManager.attach({element: anchor, callback: toolAttached});
+        
+        function toggleAPIButtons() {
+            showApiButtons = !showApiButtons;
+            
+            if (showApiButtons) {
+                $("#apiToolsPanel").css("height", "340px");
+                $("#apiToolsPanel").css("width", "550px");
+                $("#apiToolsPanel").css("bottom", "50%");
+                $("#apiToolsPanel").css("margin-bottom", "-160px");
+                $("#apiToolsPanel").css("margin-left", "-275px");
+                $("#apiButtons").css("display", "block");
+            } else {
+                $("#apiButtons").css("display", "none");
+                $("#apiToolsPanel").css("width", "140px");
+                $("#apiToolsPanel").css("margin-bottom", "0px");
+                $("#apiToolsPanel").css("margin-left", "-70px");
+                $("#apiToolsPanel").css("height", "36px");
+                $("#apiToolsPanel").css("bottom", "2px");
+            }
+        }
+    </script>
+  </body>
+</html>

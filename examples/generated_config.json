@@ -1,0 +1,76 @@
+{
+  "properties": {
+    "chemservice": "https://ec2-54-163-60-123.compute-1.amazonaws.com/cdd1.4/rest/"
+  },
+  "layout": {
+    "orientation": "Vertical",
+    "tools": [
+      {
+        "order": [
+          "Undo",
+          "Redo",
+          "MarqueeSelection",
+          "LassoSelection",
+          "ZoomOut",
+          "Eraser",
+          "MoveCanvas",
+          "ZoomIn",
+          "Text",
+          "AcyclicChain",
+          "Superscript",
+          "Subscript",
+          "Copy",
+          "Paste",
+          "ElectronPushing",
+          "RadicalPushing",
+          "Print",
+          "ReactionArrow",
+          "StructureCleanup",
+          "ReactionCleanup",
+          "Ungroup",
+          "Integral",
+          "Unintegral",
+          "CirclePlus",
+          "CircleMinus",
+          "Radical",
+          "SolidBond",
+          "DoubleBond",
+          "TripleBond",
+          "BoldBond",
+          "DashedBond",
+          "WedgeBond",
+          "HashedWedgeBond",
+          "Propane",
+          "Butane",
+          "Pentane",
+          "Hexane",
+          "Benzene",
+          "CyclohexaneChairRight",
+          "CyclohexaneChairLeft"
+        ]
+      }
+    ]
+  },
+  "features": {
+    "enable": [
+      "HydrogenCalculation",
+      "CopyPaste",
+      "Print",
+      "LogoLink",
+      "ReactionArrow",
+      "StructureCleanup",
+      "ReactionCleanup",
+      "GroupUngroup",
+      "Radical",
+      "ElectronPushing",
+      "RadicalPushing",
+      "WarningsForQueries",
+      "WarningsForLonePairDivalentConversion"
+    ],
+    "disable": [
+      "ChemTranslation",
+      "FileDrop",
+      "LonePair"
+    ]
+  }
+}

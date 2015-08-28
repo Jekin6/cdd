@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ChemDraw Direct Demo</title>
+  <script src="script/jquery-ui-1.11.4.custom/jquery-1.10.2-min.js"></script> 
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">   -->
+  <script src="script/jquery-ui-1.11.4.custom/jquery-ui.js"></script> 
+  <link rel="stylesheet" href="script/jquery-ui-1.11.4.custom/jquery-ui_custom.css">
+   <!--  <link rel="stylesheet" href="style/jquery-ui.css"> -->
+
+  <script src="script/jquery.sortable.js"></script>
+  <script src="script/config.js"></script>
+  <script src="script/configuration-generator.js"></script>
+ <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+<!--  <link rel="stylesheet" href="style/style.css">  -->
+ <style type="text/css">
+ body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+ </style>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>    
+    <li><a href="#tabs_feature">Features</a></li>
+    <li><a href="#tabs_configuration">Layouts</a></li>
+   <li><a href="#tabs_fileupload">Use Custom Config</a></li>
+  </ul>
+
+  <div id="tabs_feature">
+    <h1>Connected lists with drop animation</h1>
+  <ol class='simple_with_animation' group="simple_with_animation">
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+</ol>
+
+
+ <ol class='simple_with_animation' group="simple_with_animation">
+  <li>First2</li>
+  <li>Second2</li>
+  <li>Third2</li>
+</ol>
+
+  </div>
+
+  <div id="tabs_configuration">
+    <div id="conf_feature">
+     <h1>Feature</h1>
+     <button id="generate_feature">Generate</button><br>  
+     <ul class="feature_layout" id="feature_layout">          
+     </ul> 
+     <div style="clear:both;"></div>     
+    </div>
+    <div id="conf_layout">
+    <h1>Configuration</h1>  
+    <button id="generate_configurate">Generate</button><br>   
+        <p>
+        <label>ChemDraw Direct Service URL:</label><input id="cddservice" type="text" style="width:30%;" value="https://chemdrawdirect.perkinelmer.com/pki-cdwservice/rest/" /><br>
+        </p>
+        <p>
+        <label>Orientation:</label>
+        <select id='orientation'>
+            <option value="Vertical">Vertical</option>
+            <option value="Horizontal">Horizontal</option>
+            <option value="Mixed">Mixed</option>
+        </select>
+        </p>
+        <p>
+        <label for="group">Groupable</label>
+        <input type="checkbox" id="group" />
+        </p>
+        <ul class="layout" id="layout">          
+        </ul> 
+        <div style="clear:both;"></div>  
+    </div>     
+  </div>
+
+ <div id="tabs_fileupload">
+   <h1>Specify custom config file</h1>
+   <p>
+       <label for="file">Choose your custom config file</label>
+       <input type="file" id="file" name="file" value="Choose your custom config file" /> 
+   </p>
+  <p id="contents" /> 
+ </div>
+</div> 
+
+<div id="generate">
+    <div>
+        <p><button id="btn_generate" class="btnGenerate">Generate JSON</button> </p>
+        <label for="generated_json">Generated Configuration</label>
+        <textarea id="generated_json" class="json-content" placeholder="Generated Configuration" ></textarea>       
+     </div>  
+     <div>
+       
+       <!--  <label for="result_feature">Generated feature config</label>  -->
+        <textarea id="result_feature" title="Generated feature config" placeholder="Generated feature config" ></textarea>
+       
+       <!--  <label for="result_configurate">Generated layout config</label> -->
+        <textarea id="result_configurate" title="Generated layout config" placeholder="Generated layout config" ></textarea>        
+        
+     </div> 
+  </div>
+
+ <script>
+  $(function() {
+    // initilize tabs
+    $( "#tabs" ).tabs({
+      collapsible: true
+    });
+    // // bind fileuload handler    
+    // $('#file').bind('change', ConfigGeneration.handleFileSelect);
+   
+    // // dynamically generate features and layout options
+    // ConfigGeneration.bindFeatures("#feature_layout");
+    // ConfigGeneration.bindButtons("#layout");
+    // //make button orders dragable
+    // $('.layout').sortable(); 
+
+
+    //  $('#orientation').on('change', function(event) {
+    //    if(event.target.value=="Horizontal"){     
+        
+    //     $(".layout li").removeClass("vertical");
+    //     $(".layout li").addClass("horizontal");
+
+    //    }else if(event.target.value=="Mixed"){
+
+    //     $(".layout li").removeClass("vertical");
+    //     $(".layout li").addClass("horizontal");
+      
+    //     $("#layout>li").each(function (index, el) {
+    //       // body...
+    //       if(index==12){
+
+    //         $(this).append($('<div style="clear:both;">ff</div>'))
+    //       }
+    //     });
+
+    //    }else{
+    //     // $(".layout li").css("display","block");
+    //     $(".layout li").removeClass("horizontal");
+    //     $(".layout li").addClass("vertical");        
+    //    }
+
+    // });
+
+    // $('#generate_feature').on('click', function(event) {
+    //     var text_result = JSON.stringify(ConfigGeneration.generate_feature(),null,2);
+    //     $('#result_feature').text(text_result);
+    // });
+    // $('#generate_configurate').on('click', function(event) {
+    //     var text_result = JSON.stringify(ConfigGeneration.generate_configurate(),null,2);
+    //     $('#result_configurate').text(text_result);
+    // });
+
+    //  $('#btn_generate').on('click', function(event) {
+    //     var text_result = JSON.stringify(ConfigGeneration.generateConfigurationJson(),null,2);
+    //     $('#generated_json').text(text_result);
+    // });
+
+
+     //$("ol.example").sortable();
+     
+
+var adjustment;
+
+$("ol.simple_with_animation").sortable({
+  group: 'simple_with_animation',
+  connectWith: ".connectedSortable",
+  pullPlaceholder: true,
+  dropOnEmpty:false,
+  // animation on drop
+  onDrop: function  ($item, container, _super) {
+    var $clonedItem = $('<li/>').css({height: 0});
+    $item.before($clonedItem);
+    $clonedItem.animate({'height': $item.height()});
+
+    $item.animate($clonedItem.position(), function  () {
+      $clonedItem.detach();
+      _super($item, container);
+    });
+  },
+
+  // set $item relative to cursor position
+  onDragStart: function ($item, container, _super) {
+    var offset = $item.offset(),
+        pointer = container.rootGroup.pointer;
+
+    adjustment = {
+      left: pointer.left - offset.left,
+      top: pointer.top - offset.top
+    };
+
+    _super($item, container);
+  },
+  onDrag: function ($item, position) {
+    $item.css({
+      left: position.left - adjustment.left,
+      top: position.top - adjustment.top
+    });
+  }
+});
+
+ });
+
+  </script> 
+</body>
+</html>
