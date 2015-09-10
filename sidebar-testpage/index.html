@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>ChemDraw Test Page</title>
+	
+		<link rel="stylesheet" type="text/css" href="css/slidebars.css" />
+		
+		 
+		<style>
+
+		 #drawingTool {
+            height: 100%;
+            width: 100%;
+            height: 500px;
+            overflow: auto;
+        }
+        
+        #apiButtons {
+            width: 100%;
+            display:none;
+            padding-top: 5px;
+            overflow: auto;
+        }
+        
+        #apiButtons input {
+            margin: 5px;
+            padding: 5px;
+            width: 120px;
+        }
+        
+        #apiToolsPanel {
+            font-family: Arial;
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            height: 36px;
+            width: 140px;
+            margin-left: -70px;
+            background: #FFFFFF;
+            z-index: 1000;
+            padding: 10px;
+            -webkit-box-shadow: 10px 10px 25px #ccc; 
+            -moz-box-shadow: 10px 10px 25px #ccc; 
+            box-shadow: 10px 10px 25px #ccc;
+            border-radius: 5px;
+            border: 1px #EEEEEE solid;
+            -moz-border-radius:5px;
+        }
+        
+        #apiToolsPanel a {
+            color: #354875;
+            text-decoration: none;
+        }
+        
+        #toolsPanelTitle table {
+            width: 100%;
+            text-align: center;
+        }
+		</style>
+		<script type="text/javascript" src="http://shadev482:82/CDD1.5.0.84/chemdrawweb/chemdrawweb.nocache.js"></script>
+	    <script type="text/javascript" src="http://shadev482:82/CDD1.5.0.84/chemdrawweb/ChemdrawWebManager.js"></script>
+	    <script type="text/javascript" src="js/APITest.js"></script>
+		<script src="js/modernizr.custom.js"></script>	
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/slidebars.js"></script>
+        
+				
+	</head>
+	<body>
+
+	<div id="sb-site" style="width:60%; background-color:gray;">
+      <div id="drawingTool"></div>
+						<div id="apiToolsPanel">
+					        <div id="toolsPanelTitle">
+					            <table align="center">
+					                <tr>
+					                    <td>&nbsp;</td>
+					                    <td><a href="javascript:window.toggleAPIButtons()">API Buttons</a></td>
+					                    <td>&nbsp;</td>
+					                </tr>
+					            </table>
+					        </div>
+					        <div id="apiButtons"><span id="APITestPanel"></span></div>
+					    </div> 
+    </div>
+
+    <div class="sb-slidebar sb-left" style="width:50px; background-color:red;">
+      <!-- Your left Slidebar content. -->
+      
+    </div>
+
+    <div class="sb-slidebar sb-right" style="width:50px; background-color:green;">
+      <!-- Your right Slidebar content. -->
+      right
+    </div>
+
+
+    <!-- Slidebars -->
+   
+		
+
+		
+<script>
+    (function($) {
+        $(document).ready(function() {
+         $.slidebars({
+        siteClose: true, // true or false
+        disableOver: 480, // integer or false
+        hideControlClasses: true, // true or false
+        scrollLock: false // true or false
+      });
+        });
+      }) (jQuery);
+    $(function(){ 
+    	var features; 
+    	var showApiButtons=false;       
+        var toolAttached = function(drawingTool) {
+            APITest.attach(drawingTool, "APITestPanel");
+            //alert("attach");
+        };
+    
+        var anchor = $("#drawingTool").get(0);
+        perkinelmer.ChemdrawWebManager.attach({element: anchor, callback: toolAttached});
+
+         window.toggleAPIButtons=function() {
+            showApiButtons = !showApiButtons;
+            
+            if (showApiButtons) {
+                $("#apiToolsPanel").css("height", "360px");
+                $("#apiToolsPanel").css("width", "550px");
+                $("#apiToolsPanel").css("bottom", "50%");
+                $("#apiToolsPanel").css("margin-bottom", "-160px");
+                $("#apiToolsPanel").css("margin-left", "-275px");
+                $("#apiButtons").css("display", "block");
+            } else {
+                $("#apiButtons").css("display", "none");
+                $("#apiToolsPanel").css("width", "140px");
+                $("#apiToolsPanel").css("margin-bottom", "0px");
+                $("#apiToolsPanel").css("margin-left", "-70px");
+                $("#apiToolsPanel").css("height", "36px");
+                $("#apiToolsPanel").css("bottom", "2px");
+            }
+        }
+
+       
+         
+       
+        
+
+    });      
+       
+       
+    </script>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+body {
+	background: #444;
+	color: #ffffff;
+	font-weight: 300;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #48a770;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #2c774b;
+	outline: none;
+}
+
+
+
+    ul, ol {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 5px;
+    }
+
+    ul ol {   
+    list-style-type:decimal;
+   
+    }
+
+    div.sb-right div{
+      font-size: small;
+      font-family: 'Lato', Calibri, Arial, sans-serif;
+    }
+
+    div.sb-left p{
+      font-size: small;
+      font-family: 'Lato', Calibri, Arial, sans-serif;
+    }
+
+    .top-banner{
+      width: 100%;
+      height: 100px;
+      background: #17baef;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .top-banner .title {
+    font-size: 98px;
+    color: #074f66;
+    margin-top: 0;
+    }
+
+/*h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #17baef;
+}
+*/
+.top-banner .title .highlight {
+    color: #eebf3f;
+}
+
+
+
+    #btn-slidbar>li.sb-toggle-left{
+      float: left;
+      list-style: none; 
+      position: absolute;
+      top:20px;
+    }
+
+    #btn-slidbar>li.sb-toggle-right{
+ float: right;
+list-style: none;
+position: absolute;
+      top:20px;
+      right: 20px;
+    }
+
+  div.sb-slidebar {  
+  background-color: green; /* Default Slidebars background colour, overwrite this with your own css. */
+}
+
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
